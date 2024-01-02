@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <style>
+      p { margin:20px 0px; }
+    </style></head>
+  <body>
+
+    <a href="{% url 'src:basket_list' %}"><img src="https://cdn.icon-icons.com/icons2/2249/PNG/512/cart_outline_icon_139049.png" style="float: right; width: 50px; margin-right: 100px"></a>
+    <br><br>
+    <div class="container">
+      <div class="row">
+      {% if product_list %}
+      {% for product in product_list %}
+        <div class="col-3">
+          <h3 style="font-weight: 800">{{ forloop.counter }}</h3>
+          <div class="card border-0">
+            <img src="https://mall.ourhome.co.kr//attach_file/20201118/C4A1610E7468407FA935CBF8DE2164DF.jpg" alt="" />
+            <div class="card-body">
+              <b>{{ product.name }}</b>
+              <div style="color: gray">{{ product.desc }}</div>
+              <h5 style="font-weight: 700">{{ product.price }}원</h5>
+              <a href="#">장바구니 담기</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      {% endif %}
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  </body>
+</html>
