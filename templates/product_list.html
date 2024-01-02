@@ -9,7 +9,7 @@
     </style></head>
   <body>
 
-    <a href="{% url 'src:basket_list' %}"><img src="https://cdn.icon-icons.com/icons2/2249/PNG/512/cart_outline_icon_139049.png" style="float: right; width: 50px; margin-right: 100px"></a>
+    <a href="{% url 'src:basket_list' %}"><img src="https://cdn.icon-icons.com/icons2/2249/PNG/512/cart_outline_icon_139049.png" style="float: right; width: 50px; margin-right: 100px; margin-top: 30px"></a>
     <br><br>
     <div class="container">
       <div class="row">
@@ -23,7 +23,7 @@
               <b>{{ product.name }}</b>
               <div style="color: gray">{{ product.desc }}</div>
               <h5 style="font-weight: 700">{{ product.price }}원</h5>
-              <a href="#">장바구니 담기</a>
+                <a href="{% url 'src:add' product.id %}"> <p onclick="alert('선택한 상품이 장바구니에 담겼습니다.')">장바구니 담기</p></a>
             </div>
           </div>
         </div>
