@@ -1,4 +1,5 @@
 <!doctype html>
+{% load mathfilters %}
 <html lang="ko">
   <head>
     <meta charset="utf-8">
@@ -18,11 +19,27 @@
         <div class="col-3">
           <h3 style="font-weight: 800">{{ forloop.counter }}</h3>
           <div class="card border-0">
-            <img src="https://mall.ourhome.co.kr//attach_file/20201118/C4A1610E7468407FA935CBF8DE2164DF.jpg" alt="" />
+            <img src={{ product.img }} alt="" />
             <div class="card-body">
               <b>{{ product.name }}</b>
               <div style="color: gray">{{ product.desc }}</div>
-              <h5 style="font-weight: 700">{{ product.price }}원</h5>
+
+              {% if product.sale is not 0 %}
+              <span style="font-weight: 800; font-size: 25px">
+                  {{ product.sale_price }}원
+              </span>
+              <span style="font-size: 15px; text-decoration:line-through">
+                  {{ product.price }}원
+              </span>
+              <span style="font-size: 15px; color: orange">
+                  <b> &nbsp; {{ product.sale }}% </b>
+              </span>
+              {% else %}
+              <span style="font-weight: 800; font-size: 25px">
+                  {{ product.price }}원
+              </span>
+              {% endif %}
+
                 <a href="{% url 'src:add' product.id %}"> <p onclick="alert('선택한 상품이 장바구니에 담겼습니다.')">장바구니 담기</p></a>
             </div>
           </div>

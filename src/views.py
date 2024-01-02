@@ -17,7 +17,7 @@ def basket_list(request):
     order = basket.order.all()
     total = 0
     for o in order:
-        total = total + (o.product.price * o.cnt)
+        total = total + (o.product.sale_price * o.cnt)
     context = {'orders': order, 'total': total}
     return render(request, 'basket_list.html', context)
 
